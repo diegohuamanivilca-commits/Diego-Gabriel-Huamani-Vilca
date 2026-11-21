@@ -95,6 +95,42 @@
     .links { display:flex; flex-wrap:wrap; gap:12px; }
     .link-card { text-decoration:none; display:flex; align-items:center; gap:10px; padding:13px 16px; background:var(--paper2); border:1px solid var(--line); border-radius:13px; font-weight:700; }
     .link-card:hover { border-color:var(--sky); transform:translateY(-2px); }
+    .community-band {
+      background: linear-gradient(180deg, rgba(220,235,240,.38) 0%, rgba(237,244,245,.55) 100%);
+      border-top: 1px solid rgba(37,78,112,.13);
+      border-bottom: 1px solid rgba(37,78,112,.13);
+      padding: 76px 0;
+      margin: 24px 0;
+    }
+    .community-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--paper2);
+      border: 1px solid rgba(37,78,112,.16);
+      color: var(--blue);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font: 500 .7rem "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 8px;
+    }
+    .subsection-block { margin-top:28px; }
+    .subsection-block:first-of-type { margin-top: 0; }
+    .subsection-header { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-bottom:12px; margin-bottom:18px; border-bottom:1.5px dashed rgba(37,78,112,.22); }
+    .subsection-title { display:flex; align-items:center; gap:10px; margin:0; font-size:1.3rem; color:var(--blue); letter-spacing:-.03em; }
+    .subsection-tag { display:inline-block; background:var(--paper2); color:var(--blue); border:1px solid rgba(37,78,112,.14); padding:4px 11px; border-radius:999px; font:500 .72rem "DM Mono",monospace; text-transform:uppercase; letter-spacing:.08em; }
+    .subsection-divider { border:0; border-top:1px solid rgba(37,78,112,.14); margin:40px 0 34px; }
+    .teacher-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .teacher-card { display:flex; flex-direction:column; min-height:190px; transition:.2s; }
+    .teacher-card:hover { transform:translateY(-4px); }
+    .teacher-card .course { color:var(--blue); font:500 .7rem "DM Mono",monospace; text-transform:uppercase; letter-spacing:.09em; }
+    .teacher-card h3 { margin:9px 0 7px; font-size:1.08rem; }
+    .teacher-card p { color:var(--muted); font-size:.88rem; margin:0 0 18px; }
+    .teacher-card .btn { margin-top:auto; align-self:flex-start; padding:9px 14px; font-size:.82rem; }
+    .peers-placeholder { background:var(--paper2); border:1.5px dashed rgba(37,78,112,.28); border-radius:var(--radius); padding:26px; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .peers-placeholder p { margin:4px 0 0; color:var(--muted); font-size:.92rem; max-width:640px; }
     .contact { background:var(--blue); color:white; border-radius:24px; padding:35px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
     .contact p { color:#d5e1e8; max-width:570px; }
     .contact .btn { background:white; border-color:white; color:var(--blue); }
@@ -113,11 +149,13 @@
       .section-head { display:block; }
       .section-head p { margin-top:10px; }
       .music-list { grid-template-columns:1fr; }
+      .teacher-grid { grid-template-columns:repeat(2,1fr); }
+      .peers-placeholder { align-items:flex-start; flex-direction:column; }
       .contact { display:block; }
       .contact .btn { margin-top:12px; }
     }
     @media (max-width:460px) {
-      .grid,.note-grid { grid-template-columns:1fr; }
+      .grid,.note-grid,.teacher-grid { grid-template-columns:1fr; }
       .wrap { width:min(100% - 28px,1050px); }
       .paper-card { padding:20px; }
       h1 { font-size:2.8rem; }
@@ -131,7 +169,7 @@
       <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
       <div class="navlinks" id="navlinks">
         <a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#habilidades">Habilidades</a>
-        <a href="#intereses">Intereses</a><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a>
+        <a href="#intereses">Intereses</a><a href="#proyectos">Proyectos</a><a href="#docentes">Comunidad</a><a href="#contacto">Contacto</a>
       </div>
     </nav>
   </header>
@@ -281,9 +319,107 @@
         </article>
       </section>
 
+      <section class="community-band" id="docentes">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="community-badge">✦ Sesión aparte</span>
+              <div class="eyebrow">07 / Comunidad universitaria</div>
+              <h2>Mis docentes y compañeros</h2>
+            </div>
+            <p>Un espacio dedicado a las personas con quienes comparto esta etapa universitaria y a su trayectoria académica y profesional.</p>
+          </div>
+
+        <div class="subsection-block" id="lista-docentes">
+          <div class="subsection-header">
+            <h3 class="subsection-title">🎓 Mis docentes</h3>
+            <span class="subsection-tag">10 asignaturas</span>
+          </div>
+          <div class="teacher-grid">
+            <article class="paper-card teacher-card">
+              <span class="course">Introducción al Pensamiento Científico (IPC)</span>
+              <h3>Ernesto Cuadro Vargas</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://socios.spc.org.pe/ecuadros/" target="_blank" rel="noopener noreferrer">Ver página ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Contabilidad III</span>
+              <h3>Giovanna García Jarufe</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/giovanna-m-garc%C3%ADa-jarufe/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Cálculo I</span>
+              <h3>Maribel Quiroz Zegarra</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/maribel-marianela-8453a61a7/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Legislación Laboral</span>
+              <h3>Carlos Abarca Rubianes</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/carlos-abarca-rubianes-b2242a35/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Filosofía de la Naturaleza</span>
+              <h3>Pablo Núñez Saija</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/pablo-nu%C3%B1ez-saija/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Estadística y Probabilidades</span>
+              <h3>Daniel Mosaja Huanca</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://peru.misprofesores.com/profesores/Daniel-Huanca-Mosaja_14408" target="_blank" rel="noopener noreferrer">Ver perfil ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Matemática Financiera</span>
+              <h3>María del Carmen Delgado Torres</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/mar%C3%ADa-del-carmen-delgado-torres-76860446/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Historia de Occidente II</span>
+              <h3>Antonio Besich Adrian</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/antonio-besich-adrian-9827aa376/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Contabilidad de Costos I</span>
+              <h3>Lourde Vilma Paz Yañez</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://ccpaqp.org.pe/ccpmiembro/4805/" target="_blank" rel="noopener noreferrer">Ver perfil ↗</a>
+            </article>
+            <article class="paper-card teacher-card">
+              <span class="course">Legislación y Auditoría Tributaria</span>
+              <h3>Juan Sebastián Amat y León</h3>
+              <p>Docente</p>
+              <a class="btn secondary" href="https://www.linkedin.com/in/sebastian-amat-y-le%C3%B3n-arispe/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+            </article>
+          </div>
+        </div>
+
+        <hr class="subsection-divider">
+
+        <div class="subsection-block" id="lista-companeros">
+          <div class="subsection-header">
+            <h3 class="subsection-title">🤝 Mis compañeros</h3>
+            <span class="subsection-tag">Próximamente</span>
+          </div>
+          <div class="peers-placeholder">
+            <div>
+              <strong>Espacio reservado para mis compañeros de carrera y equipo</strong>
+              <p>Aquí iré añadiendo los perfiles, portafolios y proyectos de mis compañeros de la Universidad Católica San Pablo.</p>
+            </div>
+            <span class="hand">¡En construcción! ✎</span>
+          </div>
+        </div>
+        </div>
+      </section>
+
       <section id="rincon">
         <div class="section-head">
-          <div><div class="eyebrow">07 / Favoritos</div><h2>Mi rincón digital</h2></div>
+          <div><div class="eyebrow">08 / Favoritos</div><h2>Mi rincón digital</h2></div>
           <p>Páginas y herramientas que suelo utilizar.</p>
         </div>
         <div class="links">
@@ -297,7 +433,7 @@
 
       <section id="contacto">
         <div class="contact">
-          <div><div class="eyebrow" style="color:#b9d8e8">08 / Última página</div><h2>Hablemos.</h2>
+          <div><div class="eyebrow" style="color:#b9d8e8">09 / Última página</div><h2>Hablemos.</h2>
             <p>¿Tienes alguna consulta, proyecto académico o simplemente quieres conectar? Puedes escribirme o encontrarme en LinkedIn.</p>
             <div class="hand" style="color:#f5df91">¡Gracias por visitar mi bloc!</div>
           </div>

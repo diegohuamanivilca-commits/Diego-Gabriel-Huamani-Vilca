@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bloc personal de Diego Gabriel Huamani Vilca: Contabilidad, proyectos, música, intereses y curiosidades.">
+  <meta name="theme-color" content="#f5f0e6">
+  <meta property="og:title" content="Diego Gabriel Huamani Vilca | Mi bloc personal">
+  <meta property="og:description" content="Un poco de contabilidad, un poco de música, algunos videojuegos y muchas cosas por descubrir.">
+  <title>Diego Gabriel Huamani Vilca | Mi bloc personal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f3ea; --paper2: #fffdf8; --ink: #202d3b; --muted: #697583;
+      --blue: #254e70; --sky: #9fc8dc; --yellow: #f5df91; --green: #b8cbb5;
+      --line: #dce4e5; --shadow: 0 14px 35px rgba(40,55,65,.09);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; color: var(--ink); background:
+      radial-gradient(circle at 10% 10%, rgba(159,200,220,.16), transparent 24rem),
+      var(--paper); font-family: "DM Sans", sans-serif; line-height: 1.65; }
+    a { color: inherit; }
+    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: rgba(247,243,234,.88); border-bottom: 1px solid rgba(37,78,112,.12); }
+    .nav { max-width: 1120px; margin: auto; padding: 13px 22px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-weight:800; color:var(--blue); text-decoration:none; letter-spacing:-.04em; }
+    .brand span { font-family:"Caveat",cursive; font-size:1.45rem; }
+    .navlinks { display:flex; gap:18px; flex-wrap:wrap; }
+    .navlinks a { font-size:.85rem; color:var(--muted); text-decoration:none; font-weight:700; }
+    .navlinks a:hover { color:var(--blue); }
+    .menu { display:none; border:1px solid var(--line); background:var(--paper2); border-radius:10px; padding:8px 11px; color:var(--blue); }
+    .wrap { width:min(1050px, calc(100% - 38px)); margin:auto; }
+    .hero { min-height:610px; display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:45px; padding:75px 0 65px; }
+    .eyebrow { color:var(--blue); text-transform:uppercase; letter-spacing:.16em; font:500 .72rem "DM Mono",monospace; }
+    h1 { font-size:clamp(2.7rem,6vw,5.2rem); line-height:1.02; letter-spacing:-.065em; margin:14px 0 18px; max-width:720px; }
+    h1 span { color:var(--blue); }
+    .lead { font-size:1.08rem; color:#536171; max-width:620px; }
+    .hero-note { display:inline-block; background:var(--yellow); padding:12px 18px; margin:20px 0 26px; transform:rotate(-2deg); box-shadow:var(--shadow); font-family:"Caveat",cursive; font-size:1.35rem; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:700; font-size:.9rem; transition:.2s; border:1px solid var(--blue); }
+    .btn.primary { background:var(--blue); color:white; }
+    .btn.secondary { color:var(--blue); background:transparent; }
+    .btn:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+    .desk { position:relative; min-height:390px; display:grid; place-items:center; }
+    .notebook { width:min(330px,90%); background:var(--paper2); padding:35px 30px 30px 48px; border-radius:8px 18px 18px 8px; box-shadow:18px 18px 0 #d9d1c1,var(--shadow); transform:rotate(3deg); position:relative; background-image:repeating-linear-gradient(transparent 0 31px,rgba(111,157,183,.22) 32px); }
+    .notebook:before { content:""; position:absolute; left:29px; top:0; bottom:0; border-left:2px solid #e7aaa0; }
+    .spiral { position:absolute; left:7px; top:15px; bottom:15px; display:flex; flex-direction:column; justify-content:space-around; }
+    .spiral i { width:17px; height:9px; border:2px solid #a8afb3; border-radius:8px; background:var(--paper); }
+    .notebook .scribble { font:700 2.1rem "Caveat",cursive; color:var(--blue); line-height:1.1; }
+    .notebook p { font-size:.9rem; color:#64717d; }
+    .sticker { position:absolute; right:0; top:25px; background:var(--sky); padding:13px 16px; transform:rotate(8deg); font:600 1.2rem "Caveat",cursive; box-shadow:var(--shadow); }
+    .star { position:absolute; left:4%; bottom:18px; font-size:2.5rem; color:#d5a94e; }
+    section { padding:68px 0; }
+    .section-head { margin-bottom:28px; display:flex; align-items:end; justify-content:space-between; gap:20px; }
+    .section-head h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.055em; margin:5px 0 0; }
+    .section-head p { color:var(--muted); max-width:390px; margin:0; font-size:.94rem; }
+    .paper-card { background:var(--paper2); border:1px solid rgba(37,78,112,.10); border-radius:var(--radius); padding:25px; box-shadow:var(--shadow); }
+    .about-grid { display:grid; grid-template-columns:1.4fr .8fr; gap:18px; }
+    .about-copy p { color:#536171; }
+    .facts { display:grid; gap:12px; }
+    .fact { padding:17px; background:#edf4f5; border-radius:14px; }
+    .fact strong { display:block; color:var(--blue); font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; }
+    .fact span { font-weight:700; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .tile { min-height:165px; transition:.2s; position:relative; overflow:hidden; }
+    .tile:hover { transform:translateY(-5px) rotate(-.3deg); }
+    .tile .emoji { font-size:1.7rem; }
+    .tile h3 { margin:8px 0 5px; font-size:1.05rem; }
+    .tile p { margin:0; color:var(--muted); font-size:.9rem; }
+    .skills { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .skills h3 { color:var(--blue); margin-top:0; }
+    .skill-list { display:flex; flex-wrap:wrap; gap:9px; }
+    .chip { background:#edf2f3; color:#3e596d; padding:8px 12px; border-radius:999px; font-size:.85rem; font-weight:600; }
+    .note-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
+    .sticky { padding:22px; min-height:155px; background:var(--yellow); box-shadow:0 9px 20px rgba(40,55,65,.09); transform:rotate(-1deg); }
+    .sticky:nth-child(2n) { background:#dcebf0; transform:rotate(1.2deg); }
+    .sticky:nth-child(3n) { background:#dce5d8; transform:rotate(-.5deg); }
+    .sticky p { font:600 1.35rem "Caveat",cursive; margin:0; line-height:1.25; }
+    .sticky small { display:block; margin-top:17px; color:#68747d; font: .68rem "DM Mono",monospace; }
+    .music-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .song { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .song strong { display:block; }
+    .song small { color:var(--muted); }
+    .song a { color:var(--blue); font-weight:700; text-decoration:none; white-space:nowrap; }
+    .song a:hover { text-decoration:underline; }
+    .project { display:grid; grid-template-columns: .8fr 1.2fr; gap:22px; align-items:center; }
+    .project-art { min-height:210px; border-radius:15px; background:linear-gradient(140deg,#dcebf0,#f5df91); display:grid; place-items:center; font-size:4rem; }
+    .project p { color:var(--muted); }
+    .links { display:flex; flex-wrap:wrap; gap:12px; }
+    .link-card { text-decoration:none; display:flex; align-items:center; gap:10px; padding:13px 16px; background:var(--paper2); border:1px solid var(--line); border-radius:13px; font-weight:700; }
+    .link-card:hover { border-color:var(--sky); transform:translateY(-2px); }
+    .contact { background:var(--blue); color:white; border-radius:24px; padding:35px; display:flex; align-items:center; justify-content:space-between; gap:25px; }
+    .contact p { color:#d5e1e8; max-width:570px; }
+    .contact .btn { background:white; border-color:white; color:var(--blue); }
+    footer { padding:30px 0 45px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    .hand { font:600 1.5rem "Caveat",cursive; color:var(--blue); }
+    .muted { color:var(--muted); }
+    @media (max-width:760px) {
+      .nav { align-items:flex-start; }
+      .menu { display:block; }
+      .navlinks { display:none; position:absolute; top:58px; left:15px; right:15px; padding:16px; background:var(--paper2); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); flex-direction:column; }
+      .navlinks.open { display:flex; }
+      .hero { grid-template-columns:1fr; padding-top:55px; gap:15px; }
+      .desk { min-height:330px; }
+      .about-grid,.skills,.project { grid-template-columns:1fr; }
+      .grid,.note-grid { grid-template-columns:1fr 1fr; }
+      .section-head { display:block; }
+      .section-head p { margin-top:10px; }
+      .music-list { grid-template-columns:1fr; }
+      .contact { display:block; }
+      .contact .btn { margin-top:12px; }
+    }
+    @media (max-width:460px) {
+      .grid,.note-grid { grid-template-columns:1fr; }
+      .wrap { width:min(100% - 28px,1050px); }
+      .paper-card { padding:20px; }
+      h1 { font-size:2.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#inicio">Diego Gabriel Huamani Vilca</a>
+      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#habilidades">Habilidades</a>
+        <a href="#intereses">Intereses</a><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="inicio">
+        <div>
+          <div class="eyebrow">✦ Un espacio propio en internet</div>
+          <h1>Hola, soy <span>Diego Gabriel</span> Huamani Vilca.</h1>
+          <p class="lead">Estudiante de Contabilidad (4.º semestre) en la Universidad Católica San Pablo. Me interesan las finanzas, la auditoría, la gestión empresarial y, fuera de los números, un montón de cosas más.</p>
+          <div class="hero-note">«Un poco de contabilidad, un poco de música, algunos videojuegos y muchas cosas por descubrir».</div>
+          <div class="actions">
+            <a class="btn primary" href="#sobre-mi">Conocer más sobre mí ↘</a>
+            <a class="btn secondary" href="#contacto">Contactar</a>
+          </div>
+        </div>
+        <div class="desk" aria-label="Ilustración decorativa de una libreta">
+          <div class="notebook">
+            <div class="spiral"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="scribble">Mi pequeño<br>espacio.</div>
+            <p>Ideas, apuntes, proyectos<br>y otras cosas que me gustan.</p>
+            <p class="hand">— Diego</p>
+          </div>
+          <div class="sticker">¡Pasa, estás en casa! :)</div>
+          <div class="star">✳</div>
+        </div>
+      </section>
+
+      <section id="sobre-mi">
+        <div class="section-head">
+          <div><div class="eyebrow">01 / Presentación</div><h2>Sobre mí</h2></div>
+          <p>Una pequeña presentación de mi camino académico y de lo que me motiva a seguir aprendiendo.</p>
+        </div>
+        <div class="about-grid">
+          <article class="paper-card about-copy">
+            <p>¡Bienvenidos a mi espacio personal! Soy estudiante del cuarto semestre de Contabilidad en la <strong>Universidad Católica San Pablo (UCSP)</strong>, con el objetivo de desarrollarme profesionalmente en los ámbitos contable, financiero y empresarial.</p>
+            <p>Durante mi formación he fortalecido conocimientos relacionados con contabilidad, gestión empresarial, análisis financiero, fundamentos administrativos, legislación y auditoría tributaria y contabilidad de costos.</p>
+            <p>Mi enfoque consiste en aplicar los conocimientos teóricos en soluciones prácticas, guiándome por la ética y la responsabilidad. Durante mi etapa escolar pertenecí al <strong>tercio superior</strong>, un logro que refleja la disciplina y constancia que busco mantener en mi formación.</p>
+            <div class="hand">Siempre hay algo nuevo por aprender.</div>
+          </article>
+          <div class="facts">
+            <div class="fact"><strong>Formación</strong><span>Contabilidad · UCSP</span><br><small>En curso · 4.º semestre</small></div>
+            <div class="fact"><strong>Logro académico</strong><span>Tercio superior</span><br><small>Educación secundaria</small></div>
+            <div class="fact"><strong>Enfoque</strong><span>Ética y aprendizaje continuo</span><br><small>Rigor analítico y responsabilidad</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Formación</div><h2>Habilidades y conocimientos</h2></div>
+          <p>Conocimientos que voy construyendo durante mi formación universitaria.</p>
+        </div>
+        <div class="skills">
+          <article class="paper-card">
+            <h3>▤ Formación contable y empresarial</h3>
+            <div class="skill-list">
+              <span class="chip">Contabilidad</span><span class="chip">Contabilidad de costos</span>
+              <span class="chip">Análisis financiero</span><span class="chip">Tributación</span>
+              <span class="chip">Auditoría</span><span class="chip">Gestión empresarial</span>
+              <span class="chip">Fundamentos administrativos</span>
+            </div>
+            <p class="muted">Conocimientos en desarrollo, adquiridos mediante cursos y formación académica.</p>
+          </article>
+          <article class="paper-card">
+            <h3>✎ Formación complementaria</h3>
+            <div class="skill-list">
+              <span class="chip">Artes</span><span class="chip">Psicopedagogía</span>
+              <span class="chip">Comunicación</span><span class="chip">Pensamiento creativo</span>
+              <span class="chip">Aprendizaje continuo</span>
+            </div>
+            <p class="muted">Las herramientas digitales y los niveles de dominio se pueden añadir cuando quieras completar esta sección.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="intereses">
+        <div class="section-head">
+          <div><div class="eyebrow">03 / Fuera del aula</div><h2>Más allá de los números</h2></div>
+          <p>Porque no todo lo que me define está en lo que estudio.</p>
+        </div>
+        <div class="grid">
+          <article class="paper-card tile"><div class="emoji">🎮</div><h3>Videojuegos</h3><p>Me gustan los retos de habilidad y precisión. Geometry Dash es uno de esos desafíos.</p></article>
+          <article class="paper-card tile"><div class="emoji">📄</div><h3>Papiroflexia</h3><p>Doblar papel, probar formas y descubrir lo que puede salir de una hoja.</p></article>
+          <article class="paper-card tile"><div class="emoji">🧩</div><h3>Algoritmos y lógica</h3><p>Me interesa entender cómo funcionan las cosas y explorar nuevas ideas.</p></article>
+          <article class="paper-card tile"><div class="emoji">⚽</div><h3>Fútbol</h3><p>Un espacio para moverme, despejar la mente y disfrutar del deporte.</p></article>
+          <article class="paper-card tile"><div class="emoji">🏋️</div><h3>Entrenamiento</h3><p>Me gusta entrenar y trabajar poco a poco en mi constancia.</p></article>
+          <article class="paper-card tile"><div class="emoji">🎸</div><h3>Guitarra y música</h3><p>Una buena canción siempre puede acompañar el momento.</p></article>
+        </div>
+      </section>
+
+      <section id="notas">
+        <div class="section-head">
+          <div><div class="eyebrow">04 / Apuntes sueltos</div><h2>Pequeñas notas sobre mí</h2></div>
+          <p>Algunas cosas que podrían aparecer escritas en los márgenes de mi libreta.</p>
+        </div>
+        <div class="note-grid" id="noteGrid">
+          <div class="sticky"><p>Me interesan los algoritmos, aunque todavía me queda mucho por explorar.</p><small>NOTA N.º 01</small></div>
+          <div class="sticky"><p>Siempre hay una canción que acompaña el momento.</p><small>NOTA N.º 02</small></div>
+          <div class="sticky"><p>Puedo pasar de estudiar contabilidad a intentar superar un nivel de Geometry Dash.</p><small>NOTA N.º 03</small></div>
+        </div>
+        <p style="text-align:center;margin-top:24px"><button class="btn secondary" id="anotherNote" type="button">✦ Otra nota</button></p>
+      </section>
+
+      <section id="musica">
+        <div class="section-head">
+          <div><div class="eyebrow">05 / Banda sonora</div><h2>Mi música</h2></div>
+          <p>Una pequeña colección de canciones que forman parte de mis gustos musicales.</p>
+        </div>
+        <div class="music-list">
+          <div class="paper-card song"><div><strong>Ama de mi sol</strong><small>Milo J</small></div><a href="https://www.youtube.com/watch?v=dKVYuxTTmmA" target="_blank" rel="noopener">Escuchar ↗</a></div>
+          <div class="paper-card song"><div><strong>In the Pool</strong><small>Mi selección musical</small></div><a href="https://www.youtube.com/watch?v=rJgNgZRCi6s&list=RDtT70wO4H-Rw&index=5" target="_blank" rel="noopener">Escuchar ↗</a></div>
+          <div class="paper-card song"><div><strong>It Can't Come Quickly Enough</strong><small>Mi selección musical</small></div><a href="https://www.youtube.com/watch?v=tT70wO4H-Rw&list=RDtT70wO4H-Rw&start_radio=1&rv=LJVl4LzsZ4s" target="_blank" rel="noopener">Escuchar ↗</a></div>
+          <div class="paper-card song"><div><strong>Solifican12</strong><small>Mi selección musical</small></div><a href="https://www.youtube.com/watch?v=7WBy2u9epeM" target="_blank" rel="noopener">Escuchar ↗</a></div>
+          <div class="paper-card song"><div><strong>Labios rotos</strong><small>Mi selección musical</small></div><a href="https://www.youtube.com/watch?v=7h2ryr_uUEs&list=RD7h2ryr_uUEs&start_radio=1" target="_blank" rel="noopener">Escuchar ↗</a></div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="section-head">
+          <div><div class="eyebrow">06 / Ideas en construcción</div><h2>Mi lado creativo</h2></div>
+          <p>Un pequeño archivo de proyectos, ideas y cosas que voy desarrollando.</p>
+        </div>
+        <article class="paper-card project">
+          <div class="project-art" aria-hidden="true">🚗</div>
+          <div><div class="eyebrow">Proyecto personal</div><h3>RentMyCar</h3>
+            <p>Una propuesta de emprendimiento relacionada con el alquiler de vehículos entre particulares. La idea busca aprovechar vehículos disponibles y ofrecer alternativas de movilidad.</p>
+            <span class="chip">Idea / proyecto en desarrollo</span>
+          </div>
+        </article>
+      </section>
+
+      <section id="rincon">
+        <div class="section-head">
+          <div><div class="eyebrow">07 / Favoritos</div><h2>Mi rincón digital</h2></div>
+          <p>Páginas y herramientas que suelo utilizar.</p>
+        </div>
+        <div class="links">
+          <a class="link-card" href="https://www.youtube.com/" target="_blank" rel="noopener">▶ YouTube ↗</a>
+          <a class="link-card" href="https://www.google.com/" target="_blank" rel="noopener">⌕ Google ↗</a>
+          <a class="link-card" href="https://gemini.google.com/app?hl=es" target="_blank" rel="noopener">✦ Gemini ↗</a>
+          <a class="link-card" href="https://web.whatsapp.com/" target="_blank" rel="noopener">◉ WhatsApp ↗</a>
+          <a class="link-card" href="https://www.tiktok.com/" target="_blank" rel="noopener">♪ TikTok ↗</a>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <div class="contact">
+          <div><div class="eyebrow" style="color:#b9d8e8">08 / Última página</div><h2>Hablemos.</h2>
+            <p>¿Tienes alguna consulta, proyecto académico o simplemente quieres conectar? Puedes escribirme o encontrarme en LinkedIn.</p>
+            <div class="hand" style="color:#f5df91">¡Gracias por visitar mi bloc!</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="mailto:diego.huamani.vilca@ucsp.edu.pe">✉ Enviar correo</a>
+            <a class="btn" href="https://www.linkedin.com/in/diego-huamani-vilca-0b4496434/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <span>© 2026 Diego Gabriel Huamani Vilca.</span>
+        <span>Hecho con curiosidad, café imaginario y muchas notas. ✎</span>
+      </footer>
+    </div>
+  </main>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.addEventListener('click', () => {
+      const opened = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(opened));
+    });
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const notes = [
+      "Me gusta aprender algo y después demostrar que lo aprendí.",
+      "Un poco de orden nunca viene mal.",
+      "A veces una buena conversación también es una forma de aprender.",
+      "Entre apuntes, música y videojuegos siempre aparece algo nuevo.",
+      "No todo lo que me define está en lo que estudio.",
+      "Este bloc sigue en construcción... siempre hay algo nuevo que descubrir."
+    ];
+    let noteIndex = 0;
+    document.getElementById('anotherNote').addEventListener('click', () => {
+      const grid = document.getElementById('noteGrid');
+      const card = document.createElement('div');
+      card.className = 'sticky';
+      const p = document.createElement('p');
+      p.textContent = notes[noteIndex % notes.length];
+      const small = document.createElement('small');
+      small.textContent = 'NOTA EXTRA';
+      card.append(p, small);
+      grid.prepend(card);
+      noteIndex++;
+    });
+  </script>
+</body>
+</html>

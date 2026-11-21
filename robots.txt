@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diegohuamanivilca-commits.github.io/Diego-Gabriel-Huamani-Vilca/sitemap.xml

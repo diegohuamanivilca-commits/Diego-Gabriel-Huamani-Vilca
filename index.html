@@ -469,13 +469,37 @@
     }));
 
     const notes = [
-      "Me gusta aprender algo y después demostrar que lo aprendí.",
-      "Un poco de orden nunca viene mal.",
-      "A veces una buena conversación también es una forma de aprender.",
-      "Entre apuntes, música y videojuegos siempre aparece algo nuevo.",
-      "No todo lo que me define está en lo que estudio.",
-      "Este bloc sigue en construcción... siempre hay algo nuevo que descubrir."
-    ];
+  "Me gusta aprender algo y después demostrar que lo aprendí.",
+  "Un poco de orden nunca viene mal.",
+  "A veces una buena conversación también es una forma de aprender.",
+  "Entre apuntes, música y videojuegos siempre aparece algo nuevo.",
+  "No todo lo que me define está en lo que estudio.",
+  "Este bloc sigue en construcción... siempre hay algo nuevo que descubrir."
+];
+
+const noteGrid = document.getElementById("noteGrid");
+const anotherNote = document.getElementById("anotherNote");
+let noteIndex = 0;
+const maxNotes = 6;
+
+anotherNote.addEventListener("click", () => {
+  const card = document.createElement("div");
+  card.className = "sticky";
+
+  const p = document.createElement("p");
+  p.textContent = notes[noteIndex % notes.length];
+
+  const small = document.createElement("small");
+  small.textContent = "NOTA EXTRA";
+
+  card.append(p, small);
+  noteGrid.append(card);
+  noteIndex++;
+
+  if (noteGrid.children.length > maxNotes) {
+    noteGrid.firstElementChild.remove();
+  }
+});
     let noteIndex = 0;
     document.getElementById('anotherNote').addEventListener('click', () => {
       const grid = document.getElementById('noteGrid');

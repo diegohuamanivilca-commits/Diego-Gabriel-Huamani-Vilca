@@ -468,7 +468,7 @@
       menuBtn.setAttribute('aria-expanded', 'false');
     }));
 
-    const notes = [
+  const notes = [
   "Me gusta aprender algo y después demostrar que lo aprendí.",
   "Un poco de orden nunca viene mal.",
   "A veces una buena conversación también es una forma de aprender.",
@@ -500,19 +500,6 @@ anotherNote.addEventListener("click", () => {
     noteGrid.firstElementChild.remove();
   }
 });
-    let noteIndex = 0;
-    document.getElementById('anotherNote').addEventListener('click', () => {
-      const grid = document.getElementById('noteGrid');
-      const card = document.createElement('div');
-      card.className = 'sticky';
-      const p = document.createElement('p');
-      p.textContent = notes[noteIndex % notes.length];
-      const small = document.createElement('small');
-      small.textContent = 'NOTA EXTRA';
-      card.append(p, small);
-      grid.prepend(card);
-      noteIndex++;
-    });
   </script>
 </body>
 </html>
